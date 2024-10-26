@@ -1,0 +1,612 @@
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: normal; */
+}
+
+:root {
+    --cor0: rgb(220, 255, 255);
+    --cor1: rgb(210, 255, 255);
+    --cor2: #00f2ff;
+    --cor3: #0048E3;
+    --cor4: #0045CE;
+    --cor5: #0000E3;
+    --cor6: #001A52;
+    --cor7: black;
+}
+
+body {
+    background-color: var(--cor1);
+    color: var(--cor6);
+    overflow-x: hidden;
+}
+
+.header {
+    max-width: 1300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.logomarca-box {
+    width: 100%;
+    height: 100px;
+}
+
+.logomarca {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    position: absolute;
+    top: -100px; 
+    left: 20px;
+    opacity: 0;
+    transition: top 3s ease-in-out, opacity 3s ease-in-out;
+    z-index: 10;
+}
+
+body.logo-visible .logomarca {
+    top: 0; 
+    opacity: 1; 
+}
+
+.logomarca img {
+    width: 500px;
+    height: 110px;
+    margin: 15px;
+}
+
+.navbar {
+    width: 70%;
+    margin-top: 20px;
+}
+
+.navbar-nav {
+    margin: auto;
+    font-size: 1rem;
+}
+
+.navbar-brand img {
+    width: 50px;
+}
+
+.navbar-nav a {
+    color: var(--cor5);
+    text-align: left;
+    margin-left: 40px;
+    padding: 0.4rem;
+    position: relative;
+}
+
+.navbar-nav a::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--cor2);
+    position: absolute;
+    bottom: 0;
+    left: 6px;
+    transition: 0.5s ease-in-out;
+}
+
+.navbar-nav a:hover::after {
+    width: 60%;
+}
+
+/* Container fixo na lateral esquerda */
+.thermometer-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 45px;
+    height: 135px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 10;
+}
+
+.thermometer {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Preenchimento do contorno */
+.fill {
+    max-height: 95px;
+    position: absolute;
+    bottom: 12px;
+    width: 10%;
+    background-color: red;
+    border-radius: 45px;
+    height: 0%;
+    z-index: 0;
+    transition: height 1s ease-in-out, background-color 1s ease-in-out;
+}
+
+/* Efeito do preenchimento azul */
+body.snowing .fill {
+    background-color: blue;
+}
+
+/* Efeito de neve */
+@keyframes snow {
+    0% {
+        transform: translateY(-10px) translateX(0);
+    }
+    100% {
+        transform: translateY(100vh) translateX(calc(-10px + 10vw));
+    }
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: snow 12s linear infinite;
+}
+
+/* Ajuste dos tamanhos dos flocos */
+.small {
+    width: 4px;
+    height: 4px;
+}
+
+.medium {
+    width: 5px;
+    height: 5px;
+}
+
+.large {
+    width: 6px;
+    height: 6px;
+}
+
+/* body.snowing {
+    background-color: #1e3a8a;
+    color: white;
+} */
+
+main {
+    max-width: 1300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    margin: auto;
+}
+
+.home-content, .about-content {
+    width: 800px;
+    height: 200px;
+    margin: 60px auto;
+    text-align: justify;
+}
+
+.about-content {
+    height: 300px;
+}
+
+.about-content h1 {
+    text-align: center;
+}
+
+.home-content h2, .carousel h2, .contacts-content h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 10px;
+}
+
+.about-content h2 {
+    text-align: justify;
+    margin: 10px;
+}
+
+.carousel {
+    width: 600px;
+    height: 300px;
+    margin: 50px auto;
+}
+
+.carousel-inner {
+    margin: 10px auto;
+}
+
+.carousel-item img {
+    width: 200px;
+    margin: 20px auto;
+}
+
+span.carousel-control-next-icon,
+span.carousel-control-prev-icon {
+    background-color: var(--cor6);
+}
+
+.services h2 {
+    text-align: center;
+    margin: 20px;
+}
+
+.services h4 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card-content-2 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.card {
+    width: 180px;
+    height: 210px;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid var(--cor2);
+    border-radius: 10px;
+}
+
+.card img {
+    width: 130px;
+    max-height: 140px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.card-body {
+    display: flex;
+}
+
+h5.card-title {
+    text-align: center;
+    font-size: 1rem;
+    color: black;
+    margin: auto;
+}
+
+
+.contacts-container {
+    max-width: 1300px;
+    height: 420px;
+    margin: auto;
+}
+
+.contacts-content {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.contacts {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contacts-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--cor0);
+}
+
+.contacts-box p {
+    margin: 10px;
+    color: var(--cor6);
+}
+
+.qr-code {
+    width: 170px;
+    height: 170px;
+    border: 2px solid var(--cor2);
+    box-shadow: 0 0 15px var(--cor2);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.qr-code img {
+    width: 100%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.contact-inputs {
+    width: 350px;
+    height: 300px;
+    border: 1px solid var(--cor2);
+    border-radius: 10px;
+    margin: auto;
+}
+
+.contact-inputs h4 {
+    font-size: 0.8rem;
+    color: var(--cor3);
+    text-align: center;
+    margin: 5px;
+}
+
+.contact-inputs input, textarea {
+    width: 250px;
+    height: 30px;
+    border: 1px solid var(--cor2);
+    border-radius: 10px;
+    border-radius: 10px;
+    font-size: 0.6rem;
+    color: var(--cor7);
+    padding: 3px;
+}
+
+.contact-inputs textarea {
+    width: 280px;
+    height: 80px;
+}
+
+.contact-inputs input::placeholder {
+    padding-left: 5px;
+    color: var(--cor7);
+}
+
+.contact-inputs textarea::placeholder {
+    font-size: 0.8rem;
+    text-align: center;
+    padding-top: 10px;
+    color: var(--cor7);
+}
+
+.contact-inputs button {
+    width: 100px;
+    height: 30px;
+    border: 3px solid var(--cor5);
+    border-radius: 20px;
+    background-color: var(--cor5);
+    color: var(--cor1);
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.contact-inputs button:hover  {
+    background-color: #FFF;
+    color: var(--cor6);
+    font-weight: 900;
+    border: 3px solid #FFF;
+    box-shadow: 2px 2px 20px var(--cor7);
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+
+.inputs-box {
+    width: 300px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+}
+
+.info-container {
+    width: 690px;
+    height: 250px;
+    margin: auto;
+}
+
+.info-content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-info {
+    width: 240px;
+    height: 210px;
+}
+
+.card-info h5 {
+    text-align: center;
+}
+
+.card-info h5 i {
+    margin-right: 3px;
+}
+
+.logo-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-footer img {
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    margin: auto;
+    text-align: center;
+}
+
+.dev-aut {
+    width: 100%;
+}
+
+p.dev-aut {
+    font-size: 0.6rem;
+}
+
+@media (max-width: 900px) {
+
+    .navbar-toggler {
+        border: 1px solid var(--cor5);
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+    }
+    
+    .navbar-toggler-icon i{
+        color: var(--cor5);
+    }
+    
+    .navbar-nav a:hover::after {
+        width: 0;
+    }
+    
+}
+
+@media (max-width: 795px) {
+
+    .logomarca img {
+        width: 380px;
+        height: 90px;
+        margin-top: 30px;
+    } 
+
+    .home-content, .about-content {
+        width: 340px;
+        height: 440px;
+        margin: 30px auto;
+    }
+
+    .about-content {
+        margin-top: 0;
+        padding: 15px;
+    }
+
+    .home-content p {
+        margin: 20px;
+    }
+
+    .card-content, .card-content-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .card {
+        width: 140px;
+        height: 200px;
+    }
+    
+    .card img {
+        width: 110px;
+    }
+
+    .carousel {
+        width: 340px;
+        height: 300px;
+        margin: 50px auto;
+    }
+
+    .contacts-container {
+        max-width: 380px;
+        height: 750px;
+        margin: auto;
+    }
+    
+    .contacts-content {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    
+    .contacts {
+        flex-direction: column;
+    }
+
+    .contacts-box {
+        width: 360px;
+    }
+    
+    .qr-code {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .contact-inputs {
+        width: 320px;
+        height: 300px;
+        border: 1px solid var(--cor2);
+        border-radius: 10px;
+        margin: 10px auto;
+    }
+    
+    .info-container {
+        width: 360px;
+    }
+    
+    .info-content {
+        justify-content: center;
+    }
+    
+    .card-info {
+        width: 240px;
+        height: 210px;
+    }
+    
+    .card-info h5 {
+        text-align: center;
+    }
+    
+    .card-info h5 i {
+        margin-right: 3px;
+    }
+}
